@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+h2 {
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.tour-content {
+    line-height: 1.6;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+
+.actions {
+    display: flex;
+    justify-content: space-between  ;
+    gap: 20px;
+}
+
+.btn-order {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-order:hover {
+    background-color: #286090;
+}
+
+.back-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #0000cc;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

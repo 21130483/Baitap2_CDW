@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h2 {
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e0ffff;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ccfff6;
+}
+
+td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.note {
+    color: purple;
+    font-size: 0.9em;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+}
+
+.order-button {
+    background-color: #66ccff;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.order-button:hover {
+    background-color: #0099cc;
+}
