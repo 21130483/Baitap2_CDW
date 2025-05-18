@@ -1,16 +1,20 @@
 package org.example.lab2.model;
 
-import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 public class Booking {
 	public long id;
 	private Customer customer;
-	private Date departureDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate departureDate;
 	private int noAdults;
 	private int noChildren;
 	private Tour tour;
 
-	public Booking(Customer customer, Date departureDate, int noAdults,
+	public Booking(Customer customer, LocalDate departureDate, int noAdults,
 			int noChildren, Tour tour) {
 		this.customer = customer;
 		this.departureDate = departureDate;
@@ -35,11 +39,11 @@ public class Booking {
 		this.customer = customer;
 	}
 
-	public Date getDepartureDate() {
+	public LocalDate getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(Date departureDate) {
+	public void setDepartureDate(LocalDate departureDate) {
 		this.departureDate = departureDate;
 	}
 

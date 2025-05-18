@@ -12,6 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -48,7 +49,7 @@ public class MainController {
         model.addAttribute("tourId", id);
         Long tourId = Long.parseLong(id);
         Tour tour = tourService.getTour(tourId);
-        Booking booking = new Booking(new Customer(), new Date(), 0, 0, tour); // hoặc để trống nếu dùng form nhập
+        Booking booking = new Booking(new Customer(), null, 0, 0, tour); // hoặc để trống nếu dùng form nhập
 
         model.addAttribute("bookingForm", booking);
         model.addAttribute("tour", tour);
@@ -56,11 +57,6 @@ public class MainController {
     }
     @PostMapping("/book")
     public String handleBooking(@ModelAttribute("bookingForm") Booking form, Model model) {
-        // Tạo Customer từ form
-        Customer customer = form.getCustomer();
-        tourService.saveCustomer(customer);
-
-
         Long tourId = form.getTour().getId();
         Tour tour = tourService.getTour(tourId);
         form.setTour(tour);
@@ -68,25 +64,25 @@ public class MainController {
         // Tạo booking
         Booking booking = form;
         tourService.saveBooking(booking);
-        System.out.println(booking.toString());
-
-        // Truyền booking sang trang confirm
         model.addAttribute("booking", booking);
 
         return "confirm";
     }
 
-    // Hủy và quay lại trang danh sách
-    @PostMapping("/cancel")
-    public String cancel() {
-        return "redirect:/tours";
-    }
+    @PostMapping("/confirm")
+    public String confirm(@ModelAttribute("bookingForm") Booking form, Model model) {
+        System.out.println("chạy");
+        // Tạo Customer từ form
+        Customer customer = form.getCustomer();
+        tourService.saveCustomer(customer);
 
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // phải khớp định dạng từ input
-        sdf.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-    }
+        // Tạo booking
+        Booking booking = form;
+        tourService.saveBooking(booking);
 
+        Collection<Tour> tours = tourService.getAllTours();
+        model.addAttribute("tours", tours);
+
+        return "listTours";
+    }
 }

@@ -1,5 +1,6 @@
 package org.example.lab2.services;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -75,8 +76,7 @@ class TourDatabase {
 				"nvtuan@yahoo.com", "0908760880");
 		addCustomer(c1);
 
-		Booking b1 = new Booking(c1, new GregorianCalendar(2008, 5, 28)
-				.getTime(), 3, 1, t1);
+		Booking b1 = new Booking(c1, LocalDate.of(2008, 6, 28), 3, 1, t1);
 		addBooking(b1);
 	}
 
